@@ -210,4 +210,86 @@ public class Tradutor extends GramaticaBaseListener {
             throw new IllegalArgumentException("[var-not-found] Invalid string or variable not found.");
         }
     }
+
+    @Override
+    public void enterComando_if(GramaticaParser.Comando_ifContext ctx) {
+        System.out.print('\n');
+
+        System.out.print("\t\tif (");
+        System.out.print("");
+    }
+
+    @Override
+    public void exitComando_if(GramaticaParser.Comando_ifContext ctx) {
+        // System.out.print(") {}");
+    }
+
+    public String getRelationalOperator(String text) {
+        if (text.contains("==")) {
+            return "==";
+        } else if (text.contains("!=")) {
+            return "!=";
+        } else if (text.contains("<=")) {
+            return "<=";
+        } else if (text.contains(">=")) {
+            return ">=";
+        } else if (text.contains("<")) {
+            return "<";
+        } else if (text.contains(">")) {
+            return ">";
+        }
+
+        return null;
+    }
+
+    public boolean isNumber(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void showIfExpression(String str) {
+        if (str.contains("\"") || isNumber(str)) {
+            System.out.print(str);
+        } else {
+            Variable from = getVariableByName(str);
+            if (from == null) {
+                throw new IllegalArgumentException("[var-not-found] Invalid string or variable not found.");
+            }
+
+            System.out.print(from.name);
+        }
+    }
+
+    @Override
+    public void enterExpressao_if(GramaticaParser.Expressao_ifContext ctx) {        
+        String text = ctx.getText();
+        String operator = getRelationalOperator(text);
+        String[] data = text.split(operator);
+
+        showIfExpression(data[0]);
+        System.out.print(" " + operator + " ");
+        showIfExpression(data[1]);
+    }
+
+    @Override
+    public void exitExpressao_if(GramaticaParser.Expressao_ifContext ctx) {
+        System.out.print(") {");
+    }
+
+    @Override public void enterComando_else_if(GramaticaParser.Comando_else_ifContext ctx) {
+        System.out.print("\n\t\t} else if (");
+    }
+
+    @Override
+    public void enterComando_else(GramaticaParser.Comando_elseContext ctx) {
+        System.out.print("\n\t\t} else {");
+    }
+
+    @Override public void exitFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx) {
+        System.out.print("\n\t\t}");
+    }
 }

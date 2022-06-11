@@ -187,6 +187,56 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitComando_get(GramaticaParser.Comando_getContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao_if(GramaticaParser.Expressao_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao_if(GramaticaParser.Expressao_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_if(GramaticaParser.Comando_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_if(GramaticaParser.Comando_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_else_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_else_if(GramaticaParser.Comando_else_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_else_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_else_if(GramaticaParser.Comando_else_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_else}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_else(GramaticaParser.Comando_elseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_else}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_else(GramaticaParser.Comando_elseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#fim_linha}.
 	 * @param ctx the parse tree
 	 */

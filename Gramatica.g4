@@ -1,6 +1,6 @@
 grammar Gramatica;
 
-init: 'start.' bloco 'end.';
+init: 'script.' bloco 'script.';
 
 bloco: comando+;
 comando:
@@ -8,7 +8,9 @@ comando:
 	| inicializacao
 	| atribuicao
 	| comando_show
-	| comando_get;
+	| comando_get
+	| comando_if
+	| comando_else_if;
 
 int_: 'int';
 double_: 'double';
@@ -43,6 +45,22 @@ atribuicao:
 comando_show: 'show(' (ID | STR) ')' fim_linha;
 
 comando_get: 'get(' ID ')' fim_linha;
+
+OPERADOR_RELACIONAL: '<' | '>' | '<=' | '>=' | '==' | '!=';
+
+expressao_if: (ID | NUM | DECIMAL | STR) OPERADOR_RELACIONAL (
+		ID
+		| NUM
+		| DECIMAL
+		| STR
+	);
+
+comando_if:
+	'if ' expressao_if ':' bloco* comando_else_if? comando_else? fim_comando_if;
+comando_else_if:
+	'else if ' expressao_if ':' bloco* comando_else_if? comando_else?;
+comando_else: ('else:' bloco*);
+fim_comando_if: 'end.';
 
 fim_linha: '.';
 
