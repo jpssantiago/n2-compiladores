@@ -1,0 +1,7 @@
+start.
+
+string texto = "Exemplo de texto".
+float altura = 1.80.
+int idade = 21.
+
+end.

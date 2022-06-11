@@ -1,0 +1,7 @@
+public class Code {
+	public static void main(String[] args) {
+		String texto = "Exemplo de texto";
+		double altura = 1.80;
+		int idade = 21;
+	}
+}
