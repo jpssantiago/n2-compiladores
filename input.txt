@@ -1,7 +1,20 @@
 start.
 
-string texto = "Exemplo de texto".
-float altura = 1.80.
-int idade = 21.
+string nome.
+int idade.
+double altura.
+
+show("Informe o seu nome").
+get(nome).
+
+show("Informe a sua idade").
+get(idade).
+
+show("Informe a sua altura").
+get(altura).
+
+show(nome).
+show(idade).
+show(altura).
 
 end.

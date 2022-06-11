@@ -63,13 +63,13 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFloat_(GramaticaParser.Float_Context ctx) { }
+	@Override public void enterDouble_(GramaticaParser.Double_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFloat_(GramaticaParser.Float_Context ctx) { }
+	@Override public void exitDouble_(GramaticaParser.Double_Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -202,6 +202,30 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComando_show(GramaticaParser.Comando_showContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComando_show(GramaticaParser.Comando_showContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComando_get(GramaticaParser.Comando_getContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComando_get(GramaticaParser.Comando_getContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

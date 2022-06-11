@@ -3,20 +3,25 @@ grammar Gramatica;
 init: 'start.' bloco 'end.';
 
 bloco: comando+;
-comando: declaracao | inicializacao | atribuicao;
+comando:
+	declaracao
+	| inicializacao
+	| atribuicao
+	| comando_show
+	| comando_get;
 
 int_: 'int';
-float_: 'float';
+double_: 'double';
 string_: 'string';
 
 num: NUM;
 NUM: [0-9]+;
 
 decimal: DECIMAL;
-DECIMAL: [0-9]+'.'[0-9]+;
+DECIMAL: [0-9]+ ',' [0-9]+;
 
 str: STR;
-STR: '"'[a-zA-Z0-9 ]+'"';
+STR: '"' [a-zA-Z0-9 ]+ '"';
 
 id: ID;
 ID: [a-z]+;
@@ -25,13 +30,19 @@ separador_variavel: ',';
 
 operador_atribuicao: ' = ';
 
-tipo_variavel: (int_ | float_ | string_);
+tipo_variavel: (int_ | double_ | string_);
 
-declaracao:  tipo_variavel id (separador_variavel id)* fim_linha;
+declaracao: tipo_variavel id (separador_variavel id)* fim_linha;
 
-inicializacao: tipo_variavel id operador_atribuicao (num | decimal | str) fim_linha;
+inicializacao:
+	tipo_variavel id operador_atribuicao (num | decimal | str) fim_linha;
 
-atribuicao: id operador_atribuicao (num | decimal | str) fim_linha;
+atribuicao:
+	id operador_atribuicao (num | decimal | str) fim_linha;
+
+comando_show: 'show(' (ID | STR) ')' fim_linha;
+
+comando_get: 'get(' ID ')' fim_linha;
 
 fim_linha: '.';
 

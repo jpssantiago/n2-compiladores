@@ -47,15 +47,15 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitInt_(GramaticaParser.Int_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#float_}.
+	 * Enter a parse tree produced by {@link GramaticaParser#double_}.
 	 * @param ctx the parse tree
 	 */
-	void enterFloat_(GramaticaParser.Float_Context ctx);
+	void enterDouble_(GramaticaParser.Double_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#float_}.
+	 * Exit a parse tree produced by {@link GramaticaParser#double_}.
 	 * @param ctx the parse tree
 	 */
-	void exitFloat_(GramaticaParser.Float_Context ctx);
+	void exitDouble_(GramaticaParser.Double_Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#string_}.
 	 * @param ctx the parse tree
@@ -166,6 +166,26 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_show}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_show(GramaticaParser.Comando_showContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_show}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_show(GramaticaParser.Comando_showContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_get}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_get(GramaticaParser.Comando_getContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_get}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_get(GramaticaParser.Comando_getContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#fim_linha}.
 	 * @param ctx the parse tree

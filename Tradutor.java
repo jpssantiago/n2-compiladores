@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Tradutor extends GramaticaBaseListener {
-    // HashMap<String, String> map = new HashMap<String, String>();
     ArrayList<Variable> variables = new ArrayList<Variable>();
 
     @Override
     public void enterInit(GramaticaParser.InitContext ctx) {
-        System.out.println("public class Code {");
+        System.out.println("import java.util.Scanner;");
+        System.out.println("\npublic class Code {");
         System.out.print("\tpublic static void main(String[] args) {");
     }
 
@@ -21,7 +21,7 @@ public class Tradutor extends GramaticaBaseListener {
     }
 
     @Override
-    public void enterFloat_(GramaticaParser.Float_Context ctx) {
+    public void enterDouble_(GramaticaParser.Double_Context ctx) {
         System.out.print("\t\tdouble ");
     }
 
@@ -42,7 +42,7 @@ public class Tradutor extends GramaticaBaseListener {
 
     @Override
     public void enterDecimal(GramaticaParser.DecimalContext ctx) {
-        System.out.print(ctx.DECIMAL().getText());
+        System.out.print(ctx.DECIMAL().getText().replace(",", "."));
     }
 
     @Override
@@ -70,18 +70,55 @@ public class Tradutor extends GramaticaBaseListener {
         System.out.print('\n');
     }
 
+    public String getTypeFromString(String str) {
+        if (str.contains("string")) {
+            return "string";
+        } else if (str.contains("int")) {
+            return "int";
+        } else if (str.contains("double")) {
+            return "double";
+        }
+
+        return null;
+    }
+
+    public boolean variableAlreadyExists(String name) {
+        for (Variable variable : variables) {
+            if (variable.name.equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public Variable getVariableByName(String name) {
+        for (Variable variable : variables) {
+            if (variable.name.equals(name)) {
+                return variable;
+            }
+        }
+
+        return null;
+    }
+
     @Override
     public void exitDeclaracao(GramaticaParser.DeclaracaoContext ctx) {
-        String text = ctx.getText()
-                .replace(".", "")
-                .replace("int", "")
-                .replace("float", "")
-                .replace("string", "");
+        String text = ctx.getText().replace(".", "");
+        String type = getTypeFromString(text);
 
-        String[] vars = text.split(",");
+        String[] vars = text
+        .replace("int", "")
+        .replace("double", "")
+        .replace("string", "")
+        .split(",");
 
         for (String str : vars) {
-            variables.add(new Variable("string", str, "valor"));
+            if (variableAlreadyExists(str)) {
+                throw new IllegalArgumentException("[duplicated-var] Variable already exists.");
+            } else {
+                variables.add(new Variable(type, str));
+            }
         }
     }
 
@@ -91,18 +128,86 @@ public class Tradutor extends GramaticaBaseListener {
     }
 
     @Override
+    public void exitInicializacao(GramaticaParser.InicializacaoContext ctx) {
+        String text = ctx.getText().replace(".", "");
+        String type = getTypeFromString(text);
+
+        String[] data = text
+            .replace("int", "")
+            .replace("double", "")
+            .replace("string", "")
+            .replace(" ", "")
+            .split("=");
+        
+        if (variableAlreadyExists(data[0])) {
+            throw new IllegalArgumentException("[duplicated-var] Variable already exists.");
+        } else {
+            variables.add(new Variable(type, data[0], data[1]));
+        }
+    }
+
+    @Override
     public void enterAtribuicao(GramaticaParser.AtribuicaoContext ctx) {
         System.out.print("\n\t\t");
     }
 
     @Override
     public void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx) {
-        String text = ctx.getText().replace(".", "").replace(" ", "");
+        String text = ctx.getText()
+            .replace(".", "")
+            .replace(" ", "")
+            .replace(",", ".");
         String[] data = text.split("=");
 
-        System.out.println("\n\n\n");
-        for (Variable variable : variables) {
-            System.out.println(variable.name);
+        if (variableAlreadyExists(data[0])) {
+            for (Variable variable : variables) {
+                if (variable.name.equals(data[0])) {
+                    variable.setValue(data[1]);
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("[var-not-found] Variable '" + data[0] + "' does not exist.");
+        }
+
+    }
+
+    @Override
+    public void enterComando_show(GramaticaParser.Comando_showContext ctx) {
+        System.out.print('\n');
+
+        String text = ctx.getText();
+        String value = text.substring(text.indexOf("(") + 1, text.indexOf(")"));
+
+        if (value.contains("\"") || variableAlreadyExists(value)) {
+            System.out.print("\t\tSystem.out.println(" + value + ")");
+        } else {
+            throw new IllegalArgumentException("[var-not-found] Invalid string or variable not found.");
+        }
+    }
+
+    @Override
+    public void enterComando_get(GramaticaParser.Comando_getContext ctx) {
+        System.out.print('\n');
+
+        String id = ctx.ID().getText();
+        Variable variable = getVariableByName(id);
+        if (variable != null) {
+            System.out.println("\t\tScanner scanner" + id + " = new Scanner(System.in);");
+
+            String command = "";
+            if (variable.type.equals("string")) {
+                command = "nextLine()";
+            } else if (variable.type.equals("int")) {
+                command = "nextInt()";
+            } else if (variable.type.equals("double")) {
+                command = "nextDouble()";
+            } else {
+                throw new IllegalArgumentException("[invalid-type] Variables must be string, int or double.");
+            }
+
+            System.out.print("\t\t" + id + " = scanner" + id + "." + command);
+        } else {
+            throw new IllegalArgumentException("[var-not-found] Invalid string or variable not found.");
         }
     }
 }
