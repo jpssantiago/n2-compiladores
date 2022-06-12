@@ -1,4 +1,14 @@
 start. 
-  double valor = ((8 * 0,4) + (7 * 0,6)) / 2.
-  show(valor).
+  double n1, n2, media.
+  
+  show("\nNota 1:").
+  get(n1).
+
+  show("\nNota 2:").
+  get(n2).
+
+  show("\nMedia:").
+  
+  media = (n1 * 0,4) + (n2 * 0,6).
+  show(media).
 end.
