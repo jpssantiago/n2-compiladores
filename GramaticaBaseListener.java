@@ -195,6 +195,18 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOperacao_parenteses(GramaticaParser.Operacao_parentesesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperacao_parenteses(GramaticaParser.Operacao_parentesesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpressao(GramaticaParser.ExpressaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
