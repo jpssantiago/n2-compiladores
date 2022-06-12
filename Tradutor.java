@@ -40,7 +40,7 @@ public class Tradutor extends GramaticaBaseListener {
             controller.addVariable(type, id.toString(), null);
         }
 
-        System.out.print(text);
+        System.out.print(text.replace("string", "String"));
     }
 
     @Override
@@ -153,7 +153,12 @@ public class Tradutor extends GramaticaBaseListener {
     }
 
     @Override public void enterComando_else_if(GramaticaParser.Comando_else_ifContext ctx) {
-        System.out.print("} else if (");
+        String text = ctx.getText();
+        text = text.substring(0, text.indexOf(":"))
+            .replace("else if ", "} else if (")
+            .replace(":", ") {");
+
+        System.out.print(text);
     }
 
     @Override
