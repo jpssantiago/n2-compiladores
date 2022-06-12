@@ -47,15 +47,15 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitInt_(GramaticaParser.Int_Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#float_}.
+	 * Enter a parse tree produced by {@link GramaticaParser#double_}.
 	 * @param ctx the parse tree
 	 */
-	void enterFloat_(GramaticaParser.Float_Context ctx);
+	void enterDouble_(GramaticaParser.Double_Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#float_}.
+	 * Exit a parse tree produced by {@link GramaticaParser#double_}.
 	 * @param ctx the parse tree
 	 */
-	void exitFloat_(GramaticaParser.Float_Context ctx);
+	void exitDouble_(GramaticaParser.Double_Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#string_}.
 	 * @param ctx the parse tree
@@ -107,26 +107,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitId(GramaticaParser.IdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#separador_variavel}.
-	 * @param ctx the parse tree
-	 */
-	void enterSeparador_variavel(GramaticaParser.Separador_variavelContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#separador_variavel}.
-	 * @param ctx the parse tree
-	 */
-	void exitSeparador_variavel(GramaticaParser.Separador_variavelContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#operador_atribuicao}.
-	 * @param ctx the parse tree
-	 */
-	void enterOperador_atribuicao(GramaticaParser.Operador_atribuicaoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#operador_atribuicao}.
-	 * @param ctx the parse tree
-	 */
-	void exitOperador_atribuicao(GramaticaParser.Operador_atribuicaoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#tipo_variavel}.
 	 * @param ctx the parse tree
 	 */
@@ -147,6 +127,56 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitDeclaracao(GramaticaParser.DeclaracaoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#operador_matematico}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperador_matematico(GramaticaParser.Operador_matematicoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#operador_matematico}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperador_matematico(GramaticaParser.Operador_matematicoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#termo}.
+	 * @param ctx the parse tree
+	 */
+	void enterTermo(GramaticaParser.TermoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#termo}.
+	 * @param ctx the parse tree
+	 */
+	void exitTermo(GramaticaParser.TermoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#operacao}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperacao(GramaticaParser.OperacaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#operacao}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperacao(GramaticaParser.OperacaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#operacao_parenteses}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperacao_parenteses(GramaticaParser.Operacao_parentesesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#operacao_parenteses}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperacao_parenteses(GramaticaParser.Operacao_parentesesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao(GramaticaParser.ExpressaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao(GramaticaParser.ExpressaoContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#inicializacao}.
 	 * @param ctx the parse tree
 	 */
@@ -166,6 +196,126 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_show}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_show(GramaticaParser.Comando_showContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_show}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_show(GramaticaParser.Comando_showContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_get}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_get(GramaticaParser.Comando_getContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_get}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_get(GramaticaParser.Comando_getContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao_if(GramaticaParser.Expressao_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao_if(GramaticaParser.Expressao_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_if(GramaticaParser.Comando_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_if(GramaticaParser.Comando_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_else_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_else_if(GramaticaParser.Comando_else_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_else_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_else_if(GramaticaParser.Comando_else_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_else}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_else(GramaticaParser.Comando_elseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_else}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_else(GramaticaParser.Comando_elseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_if}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_while(GramaticaParser.Comando_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_while(GramaticaParser.Comando_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_while(GramaticaParser.Fim_comando_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_while(GramaticaParser.Fim_comando_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao_if_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao_if_do_while(GramaticaParser.Expressao_if_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao_if_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao_if_do_while(GramaticaParser.Expressao_if_do_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_do_while(GramaticaParser.Comando_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_do_while(GramaticaParser.Comando_do_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_do_while(GramaticaParser.Fim_comando_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_do_while(GramaticaParser.Fim_comando_do_whileContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#fim_linha}.
 	 * @param ctx the parse tree
