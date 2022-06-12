@@ -151,4 +151,33 @@ public class Tradutor extends GramaticaBaseListener {
     @Override public void exitFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx) {
         System.out.print("\n\t\t}");
     }
+
+    /*
+    * While e do-while
+    */
+    @Override
+    public void enterComando_while(GramaticaParser.Comando_whileContext ctx) {
+        String text = ctx.getText();
+        text = text.substring(0, text.indexOf(":"))
+            .replace("while ", "while (")
+            .replace(":", ") {");
+
+        System.out.print(text);
+    }
+
+    @Override public void exitFim_comando_while(GramaticaParser.Fim_comando_whileContext ctx) {
+        System.out.print("\n\t\t}");
+    }
+
+    @Override
+    public void enterComando_do_while(GramaticaParser.Comando_do_whileContext ctx) {
+        System.out.print("do {");
+    }
+
+    @Override
+    public void exitExpressao_if_do_while(GramaticaParser.Expressao_if_do_whileContext ctx) {
+        String text = ctx.getText();
+        
+        System.out.print("\n\t\t} while (" + text + ");");
+    }
 }

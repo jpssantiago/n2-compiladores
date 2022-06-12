@@ -247,6 +247,56 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitFim_comando_if(GramaticaParser.Fim_comando_ifContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_while(GramaticaParser.Comando_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_while(GramaticaParser.Comando_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_while(GramaticaParser.Fim_comando_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_while(GramaticaParser.Fim_comando_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao_if_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao_if_do_while(GramaticaParser.Expressao_if_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao_if_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao_if_do_while(GramaticaParser.Expressao_if_do_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterComando_do_while(GramaticaParser.Comando_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitComando_do_while(GramaticaParser.Comando_do_whileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#fim_comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void enterFim_comando_do_while(GramaticaParser.Fim_comando_do_whileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#fim_comando_do_while}.
+	 * @param ctx the parse tree
+	 */
+	void exitFim_comando_do_while(GramaticaParser.Fim_comando_do_whileContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#fim_linha}.
 	 * @param ctx the parse tree
 	 */

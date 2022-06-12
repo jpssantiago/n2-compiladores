@@ -1,18 +1,25 @@
 script.
 
-int idade.
-int idademinima = 18.
+int i = 0.
+int max.
 
-show("Informe a sua idade").
-get(idade).
+show("Informe o maximo de repeticoes").
+get(max).
 
-if idade >= idademinima:
-    show("Voce esta liberado").
-else:
-    show("Voce nao pode entrar").
-
-    int diferenca = idademinima - idade.
-    show(diferenca).
+show("Inicio do while").
+while i < max:
+    i = i + 1.
+    show(i).
 end.
+show("Fim do while").
+
+i = 0.
+
+show("Inicio do dowhile").
+do:
+  i = i + 1.
+  show(i).
+while i < max end.
+show("Fim do dowhile").
 
 script.

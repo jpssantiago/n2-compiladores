@@ -10,7 +10,9 @@ comando:
 	| comando_show
 	| comando_get
 	| comando_if
-	| comando_else_if;
+	| comando_else_if
+	| comando_while
+	| comando_do_while;
 
 int_: 'int';
 double_: 'double';
@@ -59,6 +61,20 @@ comando_else_if:
 	'else if ' expressao_if ':' bloco* comando_else_if? comando_else?;
 comando_else: ('else:' bloco*);
 fim_comando_if: 'end.';
+
+comando_while:
+	'while ' expressao_if ':' bloco* fim_comando_while;
+fim_comando_while: 'end.';
+
+expressao_if_do_while: (ID | NUM | DECIMAL | STR) ' ' OPERADOR_RELACIONAL ' ' (
+		ID
+		| NUM
+		| DECIMAL
+		| STR
+	);
+comando_do_while:
+	'do:' bloco* 'while ' expressao_if_do_while ' ' fim_comando_do_while;
+fim_comando_do_while: 'end.';
 
 fim_linha: '.';
 
