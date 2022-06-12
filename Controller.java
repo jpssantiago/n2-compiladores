@@ -14,38 +14,39 @@ public class Controller {
         return null;
     }
 
-    public boolean canSaveValue(String type, String value) {
+    public boolean canSaveValue(String name, String type, String value) {
+        for (Variable variable : variables) {
+            value = value.replace(variable.name, "");
+        }
+
         for (String operator : operators) {
             value = value.replace(operator, "");
         }
 
-        for (Variable variable : variables) {
-            // System.out.println("\n[" + variable.value + "]\n");
-            if (variable.value != null) {
-                value = value.replace(variable.name, variable.value);
-            }
+        value = value.replace(" ", "").replace(",", ".");
+
+        if (value.equals("")) {
+            value = "0";
         }
 
         switch (type) {
             case "string":
                 return value.contains("\"");
             case "int":
-                // try {
-                //     // System.out.println("\n\n%%" + value.replace(" ", ""));
-                //     int _value = Integer.parseInt(value.replace(" ", ""));
-                //     return true;
-                // } catch (Exception e) {
-                //     return false;
-                // } 
-                return true;
+                try {
+                    int _value = Integer.parseInt(value);
+                    return true;
+                } catch (Exception e) {
+                    System.out.println("\n{" + e.toString() + "}\n");
+                    throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is an integer.");
+                }
             case "double":
-                // try {
-                //     double _value = Double.parseDouble(value.replace(" ", ""));
-                //     return true;
-                // } catch (Exception e) {
-                //     return false;
-                // }
-                return true; 
+                try {
+                    double _value = Double.parseDouble(value);
+                    return true;
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is a double.");
+                }
             default:
                 return false;
         }

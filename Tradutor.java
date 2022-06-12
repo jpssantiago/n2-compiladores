@@ -51,8 +51,7 @@ public class Tradutor extends GramaticaBaseListener {
         var id = ctx.ID();
         String value = text.split("=")[1].trim();
 
-
-        if (controller.canSaveValue(type, value)) {
+        if (controller.canSaveValue(id.toString(), type, value)) {
             controller.addVariable(type, id.toString(), value);
             
             if (type.equals("double")) {
@@ -78,7 +77,7 @@ public class Tradutor extends GramaticaBaseListener {
                 value = value.replace(variable.name, variable.value);
             }
             
-            if (controller.canSaveValue(variable.type, value)) {
+            if (controller.canSaveValue(variable.name, variable.type, value)) {
                 variable.value = data[1];
 
                 if (variable.type.equals("double")) {

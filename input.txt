@@ -1,17 +1,51 @@
 start.
-  double a, b, c.
-  double d.
+  int a = 2.
+  double b = 5,5.
+  string c = "Texto".
 
-  show("\nA:").
-  get(a).
-  
-  show("\nB:").
-  get(b).
+  show("\nIf:").
+  if a > 3:
+    show("\nA = 5 > 3").
+  else:
+    show("\nA = 5 < 3").
+  end.
 
-  show("\nC:").
-  get(c).
+  show("\nWhile:").
+  int i = 0.
+  while i < 10:
+    i = i + 1.
+    show(i).
+  end.
 
-  d = c / (a + b + 10).
-  show("\nResultado: ").
-  show(d).
+  show("\nDo-while:").
+  int x = 0.
+  do:
+    x = i + 1.
+    show(x).
+  while x < 10 end.
+
+  show("\nEntrada de dados:").
+  double n1, n2, soma, subtracao, multiplicacao, divisao.
+
+  show("\nInforme o primeiro numero - inteiro ou decimal:").
+  get(n1).
+
+  show("\nInforme o segundo numero - inteiro ou decimal:").
+  get(n2).
+
+  show("\nSoma:").
+  soma = n1 + n2.
+  show(soma).
+
+  show("\nSubtracao:").
+  subtracao = n1 - n2.
+  show(subtracao).
+
+  show("\nMultiplicacao:").
+  multiplicacao = n1 * n2.
+  show(multiplicacao).
+
+  show("\nDivisao:").
+  divisao = n1 / n2.
+  show(divisao).
 end.
