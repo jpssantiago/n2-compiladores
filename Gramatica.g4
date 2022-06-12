@@ -59,11 +59,11 @@ operacao:
 		' ' operador_matematico ' ' termo
 	)*;
 
-// parenteses_operador_termo: '(' operacao ')' ' ' operador_matematico;
 operacao_parenteses:
-	(termo | '('+ operacao ')'+) ' ' operador_matematico ' ' '('+ operacao ')'+ (
-		' ' operador_matematico ' ' (termo | '('+ operacao ')'+)
-	)*;
+	(termo | '('+ operacao ')'+) ' ' operador_matematico ' ' (
+		termo
+		| '('+ operacao ')'+
+	) (' ' operador_matematico ' ' (termo | '('+ operacao ')'+))*;
 expressao: operacao_parenteses | operacao | termo;
 inicializacao: tipo_variavel ' ' ID ' = ' expressao fim_linha;
 
