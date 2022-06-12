@@ -1,6 +1,6 @@
 grammar Gramatica;
 
-init: 'script.' bloco* 'script.';
+init: 'start.' bloco* 'end.';
 
 bloco: comando+;
 comando:
@@ -14,6 +14,8 @@ comando:
 	| comando_while
 	| comando_do_while;
 
+NEW_LINE: '\\n';
+
 int_: 'int';
 double_: 'double';
 string_: 'string';
@@ -25,21 +27,42 @@ decimal: DECIMAL;
 DECIMAL: [0-9]+ ',' [0-9]+;
 
 str: STR;
-STR: '"' [a-zA-Z0-9 ]+ '"';
+STR:
+	'"' (
+		[a-zA-Z0-9 .,]
+		| NEW_LINE
+		| '+'
+		| ':'
+		| ';'
+		| '-'
+		| '_'
+		| '?'
+		| '!'
+		| '='
+		| '<'
+		| '>'
+		| '/'
+		| '*'
+	)* '"';
 
 id: ID;
-ID: [a-z]+;
+ID: ([a-z] | [A-Z]) ([a-z] | [A-Z] | [0-9])*;
 
 tipo_variavel: (int_ | double_ | string_);
 
 declaracao: tipo_variavel ' ' ID (', ' ID)* fim_linha;
 
 operador_matematico: '/' | '*' | '+' | '-';
-termo: (num | decimal | id);
-expressao:
+termo: (num | decimal | id | str);
+operacao:
 	termo ' ' operador_matematico ' ' termo (
 		' ' operador_matematico ' ' termo
+	)*;
+expressao:
+	'(' operacao ')' (
+		' ' operador_matematico ' ' ('(' operacao ')' | termo)
 	)*
+	| operacao
 	| termo;
 inicializacao: tipo_variavel ' ' ID ' = ' expressao fim_linha;
 

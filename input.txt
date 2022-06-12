@@ -1,25 +1,13 @@
-script.
+start.
+  double nota1, nota2.
 
-int i = 0.
-int max.
+  show("\nInforme a nota 1:").
+  get(nota1).
 
-show("Informe o maximo de repeticoes").
-get(max).
-
-show("Inicio do while").
-while i < max:
-    i = i + 1.
-    show(i).
+  show("\nInforme a nota 2:").
+  get(nota2).
+  
+  double nf = (nota1 * 0,4) + (nota2 * 0,6).
+  show("\nNota final: ").
+  show(nf).
 end.
-show("Fim do while").
-
-i = 0.
-
-show("Inicio do dowhile").
-do:
-  i = i + 1.
-  show(i).
-while i < max end.
-show("Fim do dowhile").
-
-script.

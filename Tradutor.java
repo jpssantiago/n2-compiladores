@@ -50,11 +50,16 @@ public class Tradutor extends GramaticaBaseListener {
 
         var id = ctx.ID();
         String value = text.split("=")[1].trim();
+
+
         if (controller.canSaveValue(type, value)) {
             controller.addVariable(type, id.toString(), value);
+            
+            if (type.equals("double")) {
+                text = text.replace(",", ".");
+            }
 
             System.out.print(text.replace("string", "String"));
-            // System.out.println("\n[" + id + ": " + value + "]\n");
         } else {
             throw new IllegalArgumentException("[wrong-type] Variable '" + id + "' is a " + type + ".");
         }
@@ -76,8 +81,11 @@ public class Tradutor extends GramaticaBaseListener {
             if (controller.canSaveValue(variable.type, value)) {
                 variable.value = data[1];
 
+                if (variable.type.equals("double")) {
+                    text = text.replace(",", ".");
+                }
+
                 System.out.print(text);
-                // System.out.println("\n[" + variable.name + ": " + variable.value + "]\n");
             }
         } else {
             throw new IllegalArgumentException("[var-not-found] Variable '" + data[0].replace(" ", "") + "' does not exist.");
@@ -92,6 +100,12 @@ public class Tradutor extends GramaticaBaseListener {
         String text = ctx.getText();
 
         String content = text.substring(text.indexOf("(") + 1, text.indexOf(")"));
+        if (!content.contains("\"")) {
+            Variable variable = controller.getVariableByName(content);
+            if (variable == null) {
+                throw new IllegalArgumentException("[var-not-found] Variable '" + content + "' does not exist.");
+            }
+        }
 
         System.out.print("System.out.println(" + content + ")");
     }
