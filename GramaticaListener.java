@@ -107,26 +107,6 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitId(GramaticaParser.IdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#separador_variavel}.
-	 * @param ctx the parse tree
-	 */
-	void enterSeparador_variavel(GramaticaParser.Separador_variavelContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#separador_variavel}.
-	 * @param ctx the parse tree
-	 */
-	void exitSeparador_variavel(GramaticaParser.Separador_variavelContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaParser#operador_atribuicao}.
-	 * @param ctx the parse tree
-	 */
-	void enterOperador_atribuicao(GramaticaParser.Operador_atribuicaoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaParser#operador_atribuicao}.
-	 * @param ctx the parse tree
-	 */
-	void exitOperador_atribuicao(GramaticaParser.Operador_atribuicaoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#tipo_variavel}.
 	 * @param ctx the parse tree
 	 */
@@ -146,6 +126,36 @@ public interface GramaticaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDeclaracao(GramaticaParser.DeclaracaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#operador_matematico}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperador_matematico(GramaticaParser.Operador_matematicoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#operador_matematico}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperador_matematico(GramaticaParser.Operador_matematicoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#termo}.
+	 * @param ctx the parse tree
+	 */
+	void enterTermo(GramaticaParser.TermoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#termo}.
+	 * @param ctx the parse tree
+	 */
+	void exitTermo(GramaticaParser.TermoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramaticaParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressao(GramaticaParser.ExpressaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramaticaParser#expressao}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressao(GramaticaParser.ExpressaoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaParser#inicializacao}.
 	 * @param ctx the parse tree
