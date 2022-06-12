@@ -1,22 +1,4 @@
-script.
-
-int idade.
-
-show("Informe a sua idade").
-get(idade).
-
-if idade >= 21:
-    if idade >= 30:
-        show("Mais de 30 anos").
-    else:
-        show("Menos de 30 anos").
-    end.
-    
-    show("Maior de idade nos EUA").
-else if idade >= 18:
-    show("Maior de idade no Brasil").
-else:
-    show("Menor de idade").
+start. 
+  double valor = ((8 * 0,4) + (7 * 0,6)) / 2.
+  show(valor).
 end.
-
-script.
