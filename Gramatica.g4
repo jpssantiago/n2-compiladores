@@ -62,6 +62,7 @@ expressao:
 	'(' operacao ')' (
 		' ' operador_matematico ' ' ('(' operacao ')' | termo)
 	)*
+	| termo ' ' operador_matematico ' (' operacao ')'
 	| operacao
 	| termo;
 inicializacao: tipo_variavel ' ' ID ' = ' expressao fim_linha;

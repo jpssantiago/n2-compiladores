@@ -1,13 +1,17 @@
 start.
-  double nota1, nota2.
+  double a, b, c.
+  double d.
 
-  show("\nInforme a nota 1:").
-  get(nota1).
-
-  show("\nInforme a nota 2:").
-  get(nota2).
+  show("\nA:").
+  get(a).
   
-  double nf = (nota1 * 0,4) + (nota2 * 0,6).
-  show("\nNota final: ").
-  show(nf).
+  show("\nB:").
+  get(b).
+
+  show("\nC:").
+  get(c).
+
+  d = c / (a + b + 10).
+  show("\nResultado: ").
+  show(d).
 end.
