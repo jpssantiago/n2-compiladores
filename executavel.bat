@@ -1,5 +1,5 @@
 cls
-SET CLASSPATH=.;C:\Users\jps_s\dev\anhembi\compiladores\n2-compiladores\antlr-4.9.3-complete.jar;%CLASSPATH%
+SET CLASSPATH=.;antlr-4.9.3-complete.jar;%CLASSPATH%
 java org.antlr.v4.Tool Gramatica.g4
 javac *.java
 java Main.java < input.txt > outputs/Code.java
