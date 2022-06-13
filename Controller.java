@@ -45,6 +45,7 @@ public class Controller {
                 }
             case "double":
                 try {
+                    value = value.replace(".", "");
                     double _value = Double.parseDouble(value);
                     return true;
                 } catch (Exception e) {

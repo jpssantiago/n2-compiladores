@@ -1,2 +1,13 @@
 start.
+    double nota1, nota2, media.
+
+    show("\nNota 1:").
+    get(nota1).
+
+    show("\nNota 2:").
+    get(nota2).
+
+    media = (nota1 * 0,4) + (nota2 * 0,6).
+    show("\nMedia:").
+    show(media).
 end.
