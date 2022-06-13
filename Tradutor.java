@@ -60,7 +60,7 @@ public class Tradutor extends GramaticaBaseListener {
 
             System.out.print(text.replace("string", "String"));
         } else {
-            throw new IllegalArgumentException("[wrong-type] Variable '" + id + "' is a " + type + ".");
+            throw new RuntimeException("[wrong-type] Variable '" + id + "' is a " + type + ".");
         }
     }
 
@@ -87,7 +87,7 @@ public class Tradutor extends GramaticaBaseListener {
                 System.out.print(text);
             }
         } else {
-            throw new IllegalArgumentException("[var-not-found] Variable '" + data[0].replace(" ", "") + "' does not exist.");
+            throw new RuntimeException("[var-not-found] Variable '" + data[0].replace(" ", "") + "' does not exist.");
         }
     }
 
@@ -102,7 +102,7 @@ public class Tradutor extends GramaticaBaseListener {
         if (!content.contains("\"")) {
             Variable variable = controller.getVariableByName(content);
             if (variable == null) {
-                throw new IllegalArgumentException("[var-not-found] Variable '" + content + "' does not exist.");
+                throw new RuntimeException("[var-not-found] Variable '" + content + "' does not exist.");
             }
         }
 
@@ -125,12 +125,12 @@ public class Tradutor extends GramaticaBaseListener {
             } else if (variable.type.equals("double")) {
                 command = "nextDouble()";
             } else {
-                throw new IllegalArgumentException("[invalid-type] Variables must be string, int or double.");
+                throw new RuntimeException("[invalid-type] Variables must be string, int or double.");
             }
 
             System.out.print("\t\t" + id + " = scanner" + id + "." + command);
         } else {    
-            throw new IllegalArgumentException("[var-not-found] Variable '" + id + "' does not exist.");
+            throw new RuntimeException("[var-not-found] Variable '" + id + "' does not exist.");
         }
     }
 

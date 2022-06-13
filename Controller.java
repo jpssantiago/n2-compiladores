@@ -41,14 +41,14 @@ public class Controller {
                     int _value = Integer.parseInt(value);
                     return true;
                 } catch (Exception e) {
-                    throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is an integer.");
+                    throw new RuntimeException("[wrong-type] Variable '" + name + "' is an integer.");
                 }
             case "double":
                 try {
                     double _value = Double.parseDouble(value);
                     return true;
                 } catch (Exception e) {
-                    throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is a double.");
+                    throw new RuntimeException("[wrong-type] Variable '" + name + "' is a double.");
                 }
             default:
                 return false;
@@ -59,7 +59,7 @@ public class Controller {
         if (getVariableByName(name) == null) {
             variables.add(new Variable(type, name, value));
         } else {
-            throw new IllegalArgumentException("[duplicated-var] Variable '" + name + "' already exists.");
+            throw new RuntimeException("[duplicated-var] Variable '" + name + "' already exists.");
         }
     }
 
@@ -93,7 +93,7 @@ public class Controller {
         } else if (text.contains("string")) {
             return "string";
         } else {
-            throw new IllegalArgumentException("[invalid-type] Variables must be int, double or string.");
+            throw new RuntimeException("[invalid-type] Variables must be int, double or string.");
         }
     }
 }
