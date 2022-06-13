@@ -60,7 +60,8 @@ operacao:
 	)*;
 
 operacao_parenteses:
-	(termo | '('+ operacao ')'+) ' ' operador_matematico ' ' (
+	'('+ termo ')'+
+	| (termo | '('+ operacao ')'+) ' ' operador_matematico ' ' (
 		termo
 		| '('+ operacao ')'+
 	) (' ' operador_matematico ' ' (termo | '('+ operacao ')'+))*;

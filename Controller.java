@@ -25,7 +25,7 @@ public class Controller {
 
         value = value
             .replace(" ", "")
-            .replace(",", "")
+            .replace(",", ".")
             .replace("(", "")
             .replace(")", "");
 
@@ -41,7 +41,6 @@ public class Controller {
                     int _value = Integer.parseInt(value);
                     return true;
                 } catch (Exception e) {
-                    System.out.println("\n{" + e.toString() + "}\n"); // 
                     throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is an integer.");
                 }
             case "double":
@@ -49,7 +48,6 @@ public class Controller {
                     double _value = Double.parseDouble(value);
                     return true;
                 } catch (Exception e) {
-                    System.out.println("\n{" + e.toString() + "}\n"); //
                     throw new IllegalArgumentException("[wrong-type] Variable '" + name + "' is a double.");
                 }
             default:
